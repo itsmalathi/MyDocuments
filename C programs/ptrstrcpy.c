@@ -1,11 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+//string copy using pointers in a dynamic way
+
+//Global structure declaration
 typedef struct {
 	char source[20];
 	char *dest;
 }struct_data;
 
+//To copy the source string to destination pointer
 int display(struct_data *data)
 { 
   int index;
@@ -15,7 +20,7 @@ int display(struct_data *data)
  		 
   		 (data+index)->dest= (data+index)->source;
  	}
- 	(data+index)->dest='\0';
+ 	(data+index)->dest='\0';//string must consist end of the character as NULL
  	return 0;
 
 }
@@ -23,7 +28,7 @@ int display(struct_data *data)
 int main()
 { 
   struct_data *data;
-  data= malloc(sizeof(struct_data));
+  data= malloc(sizeof(struct_data));//Dynamic memory allocation of pointer in heap
  
   printf("Enter the source string\t:");
   scanf("%s",data->source);
